@@ -29,3 +29,8 @@ jobs:
       
       - name: Build
         run: dotnet build ${{ env.PROJECT_FILE }} --configuration Release --no-restore
+
+      - uses: actions/upload-artifact@v2
+        with:	
+          name: 'Database DacPac'	
+          path: 'src/bin/Release/netstandard2.0/*.dacpac'
