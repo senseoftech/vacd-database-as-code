@@ -1,0 +1,37 @@
+name: Github-CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    
+  workflow_dispatch:
+  
+env:
+  DOTNET_VERSION: '5.0.401' 
+  PROJECT_FILE: 'src/Sot.Vacd.DatabaseAsCode.csproj'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      
+      - uses: actions/checkout@v2
+      
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Install dependencies
+        run: dotnet restore ${{ env.PROJECT_FILE }}
+      
+      - name: Build
+        run: dotnet build ${{ env.PROJECT_FILE }} --configuration Release --no-restore
+
+      - uses: actions/upload-artifact@v2
+        with:	
+          name: 'Database DacPac'	
+          path: 'src/**/bin/**/*.dacpac'
+          if-no-files-found: error
