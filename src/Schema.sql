@@ -1,1 +1,1 @@
-﻿CREATE SCHEMA [dbo];
+﻿CREATE SCHEMA [inv];
