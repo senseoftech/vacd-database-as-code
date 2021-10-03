@@ -2,12 +2,23 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <SqlServerVersion>SqlAzure</SqlServerVersion>
+        <!-- 
+          Sql100	  on-premises, version 10.0
+          Sql110	  on-premises, version 11.0
+          Sql120	  on-premises, version 12.0
+          Sql130	  on-premises, version 13.0
+          Sql140	  on-premises, version 14.0
+          Sql150	  on-premises, version 15.0
+          Sql90	    on-premises, version 9.0
+          SqlAzure	Azure
+          SqlDw	    For Sql Data Warehouse, version SqlDw
+        -->
         <Version>0.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <Content Include="*.sql" />
-    <Content Include="dbo\**\*.sql" />
+    <Content Include="inv\**\*.sql" />
 
     <Content Remove="Post-Deployment\*.sql" />
     <None Include="Post-Deployment\*.sql" />
