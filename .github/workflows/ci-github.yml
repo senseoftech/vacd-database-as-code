@@ -34,3 +34,4 @@ jobs:
         with:	
           name: 'Database DacPac'	
           path: 'src/**/bin/**/*.dacpac'
+          if-no-files-found: error
